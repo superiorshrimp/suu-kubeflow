@@ -10,6 +10,7 @@
  - Szymon Paszkiewicz - infrastruktura AWS
  - Jędrzej Ziebura - modele AI
  - Szymon Żychowicz - dokumentacja, dashboard
+**TODO: dodanie grupy i roku**
 
 ### Technologia realizacji
 **Kubeflow** służy do wdrażania i wykorzystywania modeli sztucznej inteligencji i uczenia maszynowego w prostym, przenośnym, skalowalnym, rozproszonym środowisku. Wszędzie gdzie używany jest Kubernetes łatwo można zaaplikować Kubeflow.\
@@ -57,3 +58,15 @@ Amazon Virtual Private Cloud służy do logicznego podziału zarządzanej infras
 
 ##### AWS S3
 Amazon Simple Storage Service znany jako S3 jest serwisem zapewniającym dostęp do skalowanej, persystentnej pamięci o wysokiej dostępności w chmurze.
+
+### Architektura rozwiązania
+
+### Opis konfiguracji
+
+### Instalacja
+
+### Używanie
+
+### Podsumowanie
+
+### Referencje
