@@ -1,16 +1,17 @@
 # Kubeflow
 
-<p>
+<p align="center">
   <img src="img/logo/kubeflow.png" width="256" />
   <img src="img/logo/aws.png" width="256" /> 
 </p>
 
 ### Zespół
+grupy: X i Y, rok 2024
  - Antonina Kuś - konfiguracja Kubeflow
  - Szymon Paszkiewicz - infrastruktura AWS
  - Jędrzej Ziebura - modele AI
  - Szymon Żychowicz - dokumentacja, dashboard
-**TODO: dodanie grupy i roku**
+**TODO: dodanie grup**
 
 ### Technologia realizacji
 **Kubeflow** służy do wdrażania i wykorzystywania modeli sztucznej inteligencji i uczenia maszynowego w prostym, przenośnym, skalowalnym, rozproszonym środowisku. Wszędzie gdzie używany jest Kubernetes łatwo można zaaplikować Kubeflow.\
@@ -59,14 +60,16 @@ Amazon Virtual Private Cloud służy do logicznego podziału zarządzanej infras
 ##### AWS S3
 Amazon Simple Storage Service znany jako S3 jest serwisem zapewniającym dostęp do skalowanej, persystentnej pamięci o wysokiej dostępności w chmurze.
 
+### Koncepcja rozważanego przypadku użycia
+
 ### Architektura rozwiązania
 
 ### Opis konfiguracji
 
 ### Instalacja
 
-### Używanie
+### Wdrożenie i użytkowanie demo
 
-### Podsumowanie
+### Podsumowanie i wnioski
 
 ### Referencje
