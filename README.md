@@ -6,7 +6,7 @@
 </p>
 
 ### Zespół
-grupy: X i Y, rok 2024
+grupy: 2 i 5, rok 2024
  - Antonina Kuś - konfiguracja Kubeflow
  - Szymon Paszkiewicz - infrastruktura AWS
  - Jędrzej Ziebura - modele AI
