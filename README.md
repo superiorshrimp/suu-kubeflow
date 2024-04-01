@@ -11,7 +11,9 @@ grupy: 2 i 5, rok 2024
  - Szymon Paszkiewicz - infrastruktura AWS
  - Jędrzej Ziebura - modele AI
  - Szymon Żychowicz - dokumentacja, dashboard
-**TODO: dodanie grup**
+
+### Tematyka
+W dobie rosnącej popularności sztucznej inteligencji oraz coraz większej złożoności modeli rośnie zapotrzebowanie na moc obliczeniową. Aby ją osiągnąć można polepszać komponenty komputera, ale można także wykorzystać infrastrukturę rozproszoną. Jest to znacznie efektywniejsze środowisko. Kubeflow i AWS są technologiami będącymi odpowiedzią na to zapotrzebowanie.
 
 ### Technologia realizacji
 **Kubeflow** służy do wdrażania i wykorzystywania modeli sztucznej inteligencji i uczenia maszynowego w prostym, przenośnym, skalowalnym, rozproszonym środowisku. Wszędzie gdzie używany jest Kubernetes łatwo można zaaplikować Kubeflow.\
@@ -19,9 +21,6 @@ grupy: 2 i 5, rok 2024
 Pomimo tego, że większość komponentów opiera swoje działanie na Pythonie i YAMLu, konkretna technologia zastosowana w projekcie zależeć będzie od wybranego komponentu, który będzie prezentowany. Przykładowo Kubeflow Pipelines (KFP) oparte są o Pythonowe SDK, konfiguracja Notebooks wykorzystuje Kubeflow GUI i YAMLe pliki konfiguracyjne, natomiast Kubeflow Training Operator (KTO) może korzystać ze znanych bibliotek MLowych tj. transformers, PyTorch lub DeepSpeed.\
 \
 Jako środowisko chmurowe zespół wykorzysuje **AWS**, który jest bogato wspierany przez kontrybutorów Kubeflow. W sieci dostępne jest dużo wsparcia dla tego rozwiązania przez jego popularność.
-
-### Tematyka
-W dobie rosnącej popularności sztucznej inteligencji oraz coraz większej złożoności modeli rośnie zapotrzebowanie na moc obliczeniową. Aby ją osiągnąć można polepszać komponenty komputera, ale można także wykorzystać infrastrukturę rozproszoną. Jest to znacznie efektywniejsze środowisko. Kubeflow i AWS są technologiami będącymi odpowiedzią na to zapotrzebowanie.
 
 ### Komponenty
 
@@ -49,10 +48,10 @@ Jest platformą do wdrażania wytrenowanych modeli sztucznej inteligencji bazuj�
 Amazon Elastic Kubernetes Service jest usługą zapewniającą wsparcie dla Kubernetesa. Wyręcza administratora z dużej części pracy nad instalacją i utrzymaniem Kubernetesowej platformy.
 
 ##### AWS EC2
-Amazon Elastic Compute Cloud pozwala na wypożyczanie wirtualnych maszyn na podstawie obrazu AMI. Wykorzystuje się je do uruchamiania na nich aplikacji. Charakteryzuje się skalowalnością w zależności od obciążenia spowodowanego przez użytkowników. 
+Amazon Elastic Compute Cloud pozwala na wypożyczanie wirtualnych maszyn na podstawie obrazu AMI. Wykorzystuje się je do uruchamiania na nich aplikacji. 
 
 ##### AWS Terraform
-Usługa ma za zadanie ułatwienie zarządzanie innymi komponentami AWS. Niesie wiele korzyści automatyzując proces stawiania aplikacji oraz wdrażania zmian redukując czynnik ludzki co ogranicza błędy.
+Usługa ma za zadanie ułatwienie zarządzanie innymi komponentami AWS. Niesie wiele korzyści automatyzując proces stawiania aplikacji oraz wdrażania zmian redukując czynnik ludzki co ogranicza błędy. Wykorzystuje koncept IaC.
 
 ##### AWS VPC
 Amazon Virtual Private Cloud służy do logicznego podziału zarządzanej infrastruktury. Umożliwia utworzenie architektury sieciowej przypominającej tradycyjnie używanej lokalnie (niechmurowo).
@@ -61,12 +60,28 @@ Amazon Virtual Private Cloud służy do logicznego podziału zarządzanej infras
 Amazon Simple Storage Service znany jako S3 jest serwisem zapewniającym dostęp do skalowanej, persystentnej pamięci o wysokiej dostępności w chmurze.
 
 ### Koncepcja rozważanego przypadku użycia
+% WSTEP 
+% Żymon
+
+##### Faza trenowania modelu sztucznej inteligencji
+% Tosia // PYTORCH + TRANSFORMERS
+
+##### Faza serwowania modelu
+% Pymon // MODELE NLP
+
+##### Wybrany model
+% Jędrzej
+
+##### Zbiór treningowy
+% Jędrzej
 
 ### Architektura rozwiązania
 
 ### Opis konfiguracji
 
 ### Instalacja
+
+### Instrukcja inicjalizacji systemu
 
 ### Wdrożenie i użytkowanie demo
 
