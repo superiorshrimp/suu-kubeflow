@@ -60,8 +60,7 @@ Amazon Virtual Private Cloud służy do logicznego podziału zarządzanej infras
 Amazon Simple Storage Service znany jako S3 jest serwisem zapewniającym dostęp do skalowanej, persystentnej pamięci o wysokiej dostępności w chmurze.
 
 ### Koncepcja rozważanego przypadku użycia
-% WSTEP 
-% Żymon
+Wykorzystanie systemu można podzielić na 2 fazy. Są to faza trenowania modelu SI oraz jego serwowania. System zapewnia także możliwość śledzenia metryk, co pozwala analizować jego wydajność kiedy ten pracuje.
 
 ##### Faza trenowania modelu sztucznej inteligencji
 % Tosia // PYTORCH + TRANSFORMERS
