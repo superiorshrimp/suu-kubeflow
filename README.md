@@ -66,8 +66,11 @@ Wykorzystanie systemu można podzielić na 2 fazy. Są to faza trenowania modelu
 % Tosia // PYTORCH + TRANSFORMERS
 
 ##### Faza serwowania modelu
-% Pymon // MODELE NLP
-
+W celu serwowania modelu wykorzystana zostanie Kserve. Platforma dostarczająca zestaw interfejsów udostępniających model sztucznej inteligencji. 
+Bazuje ona na gotowych rozwiązaniach wprowadzanych przez takie biblioteki jak TFServing, TorchServe, czy Triton Inference Server. 
+W ramach demo wykorzystany zostanie wcześniej wytrenowany model. Zostanie on wystawiony z wykorzystaniem narzędzi i w pełni obsłużony. 
+Pokazane zostanie API powstałe na bazie interfejsów, metryki generowane przez interfejsy oraz możliwe takie funkcjonalności jak AuthZ, AuthN oraz logowanie. 
+Ważne przy uwzględnieniu tej fazy jest ilość kodu wygenerowana w trakcie tworzenia infrastruktury oraz przedstawienie dogmatu IaC.
 ##### Wybrany model
 % Jędrzej
 
