@@ -68,11 +68,38 @@ Wykorzystanie systemu można podzielić na 2 fazy. Są to faza trenowania modelu
 ##### Faza serwowania modelu
 % Pymon // MODELE NLP
 
+##### Słowo wstępu do modelu i zbioru treningowego
+ Kluczową obserwacją w przypadku zbioru danych i modelu, na którym zostanie przeprowadzone demo, jest fakt, że nie są one punktem centralnym projektu,
+a jedynie środkiem do pokazania możliwości KFTO i KServe'a, zatem sama jakość wytrenowanego modelu, czy jego adekwatność do danego zadania nie jest szczególnie istotna. Najważniejszym parametrem
+zarówno modelu jak i zbioru treningowego jest **wielkość**, ponieważ to ona pozwoli nam uwydatnić zalety Kubeflow.
+___________
 ##### Wybrany model
-% Jędrzej
+Niemniej jednak wybrano pasujące do siebie model i zadanie z nadzieją osiągnięcia satrysfakcjonującego wyniku.
 
+Wybranym modelem jest [RoBERTa-large](https://huggingface.co/FacebookAI/roberta-large), czyli model w architekturze transformer w wariancie encoder-only. Posiada on **355 milionów parametrów**, a jego zapis w wersji binarnej waży około **1.43GB**. 
+Jego wielkość praktycznie uniemożliwia efektywne trenowanie na pojedynczym CPU, więc dobrze nadaje się do pokazania efektywności Kubeflow.
+__________
 ##### Zbiór treningowy
-% Jędrzej
+Ponieważ modele typu encoder-only najlepiej radzą sobie w zadaniach należących do NLU (Natural Language Understanding) takich jak klasyfikacja tokenów (NER, PoS tagging) czy klasyfikacja tekstu (analiza sentymentu, detekcja spamu) zdecydowano się na
+wybór zbioru danych umożliwiających wytrenowanie modelu w zadaniu drugiego z wymienionych typów - wieloklasowej klasyfikacji tekstu.
+
+Do tego zadania wybrano zbiór danych [Yahoo anserws topics](https://huggingface.co/datasets/yahoo_answers_topics?row=1), który w zbiorze treningowym posiada aż **1.4 miliona** przykładów. Jest to tak ogromna ilość iż może okazać się, że w projekcie zostanie użyta tylko część zbioru.
+
+Dla ukazania skali zbioru Yahoo, porównajmy go ze  zbiorem [SQuAD v2](https://huggingface.co/datasets/rajpurkar/squad_v2) autorstwa uniwersytetu Stanford, do zadania polegającego na odpowiadania na pytania (ang. question-answering). Uważany za duży zbiór posiada tylko około 130 tysięcy próbek w zbiorze treningowym. Jest zatem prawie 11 razy mniejszy od Yahoo.
+________
+#### Uzasadanienie wyboru
+Aby pokazać, że trening wybranego modelu na powyższym zbiorze danych na pojedyńczym CPU lub GPU jest zadaniem karkołomnym stworzono [demo notebook](), gdzie RoBERTę próbujemy trenować na zaledwie 20% zbioru Yahoo.
+
+Poniżej możemy zobaczyć przewidywany czas treningu o długośći dwóch epok (dwukrotne wykorzystanie próbek treningowych) na zasobach platformy Google Colab.
+
+* Przykład na CPU - 2 procesory Intel(R) Xeon(R) CPU @ 2.20GHz - pamięć RAM przepełnia się zanim załaduje się progress bar. Zwykle gdy używamy GPU mówimy o około 10-cio krotnym przyśpieszeniu treningu. Nawet jeśli założymy 8-krotne wydłużenie czasu, otrzymujemy 148H, czyli trochę ponad 6 dni.
+* Dla karty T4 GPU, która ma 16GB RAMu praktycznie od razu ta pamięć się przepełnia i otrzymujemy błąd ```OutOfMemoryError: CUDA out of memory```
+
+<p align="center">
+  <img src="img/t4_gpu_colab_training.png" width="512" />
+  <p align="center">Przykład na GPU - karta graficzna T4 - przewidywany czas treningu &rarr; 18.5H</p>
+</p>
+
 
 ### Architektura rozwiązania
 
