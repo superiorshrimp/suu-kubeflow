@@ -66,13 +66,17 @@ Wykorzystanie systemu można podzielić na 2 fazy. Są to faza trenowania modelu
 % Tosia // PYTORCH + TRANSFORMERS
 
 ##### Faza serwowania modelu
-% Pymon // MODELE NLP
+W celu serwowania modelu wykorzystana zostanie Kserve. Platforma dostarczająca zestaw interfejsów udostępniających model sztucznej inteligencji. 
+Bazuje ona na gotowych rozwiązaniach wprowadzanych przez takie biblioteki jak TFServing, TorchServe, czy Triton Inference Server. 
+W ramach demo wykorzystany zostanie wcześniej wytrenowany model. Zostanie on wystawiony z wykorzystaniem narzędzi i w pełni obsłużony. 
+Pokazane zostanie API powstałe na bazie interfejsów, metryki generowane przez interfejsy oraz możliwe takie funkcjonalności jak AuthZ, AuthN oraz logowanie. 
+Ważne przy uwzględnieniu tej fazy jest ilość kodu wygenerowana w trakcie tworzenia infrastruktury oraz przedstawienie dogmatu IaC.
 
 ##### Słowo wstępu do modelu i zbioru treningowego
  Kluczową obserwacją w przypadku zbioru danych i modelu, na którym zostanie przeprowadzone demo, jest fakt, że nie są one punktem centralnym projektu,
 a jedynie środkiem do pokazania możliwości KFTO i KServe'a, zatem sama jakość wytrenowanego modelu, czy jego adekwatność do danego zadania nie jest szczególnie istotna. Najważniejszym parametrem
 zarówno modelu jak i zbioru treningowego jest **wielkość**, ponieważ to ona pozwoli nam uwydatnić zalety Kubeflow.
-___________
+_________
 ##### Wybrany model
 Niemniej jednak wybrano pasujące do siebie model i zadanie z nadzieją osiągnięcia satrysfakcjonującego wyniku.
 
