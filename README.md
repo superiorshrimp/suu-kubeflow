@@ -88,7 +88,7 @@ Do tego zadania wybrano zbiór danych [Yahoo anserws topics](https://huggingface
 Dla ukazania skali zbioru Yahoo, porównajmy go ze  zbiorem [SQuAD v2](https://huggingface.co/datasets/rajpurkar/squad_v2) autorstwa uniwersytetu Stanford, do zadania polegającego na odpowiadania na pytania (ang. question-answering). Uważany za duży zbiór posiada tylko około 130 tysięcy próbek w zbiorze treningowym. Jest zatem prawie 11 razy mniejszy od Yahoo.
 ________
 #### Uzasadanienie wyboru
-Aby pokazać, że trening wybranego modelu na powyższym zbiorze danych na pojedyńczym CPU lub GPU jest zadaniem karkołomnym stworzono [demo notebook](), gdzie RoBERTę próbujemy trenować na zaledwie 20% zbioru Yahoo.
+Aby pokazać, że trening wybranego modelu na powyższym zbiorze danych na pojedyńczym CPU lub GPU jest zadaniem karkołomnym stworzono [demo notebook](showcases/SUU_model_training_showcase.ipynb), gdzie RoBERTę próbujemy trenować na zaledwie 20% zbioru Yahoo.
 
 Poniżej możemy zobaczyć przewidywany czas treningu o długośći dwóch epok (dwukrotne wykorzystanie próbek treningowych) na zasobach platformy Google Colab.
 
