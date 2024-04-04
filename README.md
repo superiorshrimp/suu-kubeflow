@@ -69,7 +69,7 @@ Pozwala wykorzystać zasoby Kubernetesa do efektywnego treningu poprzez Kubernet
 W naszym projekcie zostanie wykorzystany framework PyTorch wraz z PyTorchJob. Trainig Operator odpowiada za planowanie odpowiednich 
 obciążeń Kubernetesa do implementacji różnych strategii szkolenia rozproszonego dla różnych frameworków używanych w uczeniu maszynowym.
 
-Wykorzystay jest do tego algorytm ring all-reduce. To algorytm służący do redukcji wszystkich wartości przetwarzanych 
+Wykorzystany jest do tego algorytm ring all-reduce. To algorytm służący do redukcji wszystkich wartości przetwarzanych 
 przez różne węzły klastra do jednej globalnej wartości. Algorytm ten wykorzystuje topologię pierścienia, gdzie dane 
 są przesyłane pomiędzy węzłami wzdłuż cyklicznej ścieżki. Każdy węzeł przekazuje swoje dane do sąsiada, który następnie
 dokonuje odpowiednich operacji arytmetycznych (na przykład dodawanie) na otrzymanych danych oraz własnych, a następnie
@@ -79,9 +79,6 @@ przedstawiono działanie tego algorytmu we frameworku PyTorch.
 <p align="center">
   <img src="img/architecture/pytorchjob.png"/>
 </p>
-
-
-
 
 ##### Faza serwowania modelu
 W celu serwowania modelu wykorzystana zostanie Kserve. Platforma dostarczająca zestaw interfejsów udostępniających model sztucznej inteligencji. 
@@ -121,7 +118,6 @@ Poniżej możemy zobaczyć przewidywany czas treningu o długośći dwóch epok 
   <img src="img/t4_gpu_colab_training.png" width="512" />
   <p align="center">Przykład na GPU - karta graficzna T4 - przewidywany czas treningu &rarr; 18.5H</p>
 </p>
-
 
 ### Architektura rozwiązania
 
