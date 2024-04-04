@@ -63,7 +63,25 @@ Amazon Simple Storage Service znany jako S3 jest serwisem zapewniającym dostęp
 Wykorzystanie systemu można podzielić na 2 fazy. Są to faza trenowania modelu SI oraz jego serwowania. System zapewnia także możliwość śledzenia metryk, co pozwala analizować jego wydajność kiedy ten pracuje.
 
 ##### Faza trenowania modelu sztucznej inteligencji
-% Tosia // PYTORCH + TRANSFORMERS
+Do trenowania modelu wykorzystany zostanie Kubeflow Trainig Operator. Jest to platforma do trenowania modeli sztucznej inteligencji w środowisku rozproszonym.
+Pozwala wykorzystać zasoby Kubernetesa do efektywnego treningu poprzez Kubernetes Custom Resources APIs.
+
+W naszym projekcie zostanie wykorzystany framework PyTorch wraz z PyTorchJob. Trainig Operator odpowiada za planowanie odpowiednich 
+obciążeń Kubernetesa do implementacji różnych strategii szkolenia rozproszonego dla różnych frameworków używanych w uczeniu maszynowym.
+
+Wykorzystay jest do tego algorytm ring all-reduce. To algorytm służący do redukcji wszystkich wartości przetwarzanych 
+przez różne węzły klastra do jednej globalnej wartości. Algorytm ten wykorzystuje topologię pierścienia, gdzie dane 
+są przesyłane pomiędzy węzłami wzdłuż cyklicznej ścieżki. Każdy węzeł przekazuje swoje dane do sąsiada, który następnie
+dokonuje odpowiednich operacji arytmetycznych (na przykład dodawanie) na otrzymanych danych oraz własnych, a następnie
+przesyła je dalej. Proces ten kontynuuje się, aż wszystkie węzły otrzymają zaktualizowane dane. Na poniższym diagramie
+przedstawiono działanie tego algorytmu we frameworku PyTorch.
+
+<p align="center">
+  <img src="img/architecture/pytorchjob.png"/>
+</p>
+
+
+
 
 ##### Faza serwowania modelu
 W celu serwowania modelu wykorzystana zostanie Kserve. Platforma dostarczająca zestaw interfejsów udostępniających model sztucznej inteligencji. 
