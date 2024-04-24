@@ -121,7 +121,90 @@ Poniżej możemy zobaczyć przewidywany czas treningu o długośći dwóch epok 
 
 ### Architektura rozwiązania
 
+<p align="center">
+  <img src="img/infrastructure.png" width="512" />
+  <p align="center">Infrastruktura chmurowa dla demo</p>
+</p>
+
+Infrastruktura chmurowa bazuje na zasobach dostarczonych przez AWS. 
+Wykorzystywana jest dedykowana platforma EKS służącą do zarządzania infrastrukturą z pomocą narzędzia Kubernetes. 
+Jest ona, także głównym zasobem Kubeflow, którym zarządza i buduje swoją konfigurację na niej. 
+Kubeflow potrzebuje odpowiedniego środowiska w celu inicjalizacji na nim pracy. 
+Jednym wymogów jest wykorzystywanie systemu Ubuntu. W tym celu powstał kontroler Kubeflow, 
+będący maszyną EC2 z odpowiednią konfiguracją. Podczas inicjalizacji pobiera wszystkie potrzebne aplikacje i biblioteki 
+oraz ustawia zmienne środowiskowe, tak by użytkownik mógł od razu używać to narzędzie. Infrastruktura jest wykorzystywana
+w obu podpunktach demo w trakcie trenowania, jak i w trakcie serwowania modelu.
+
+W trakcie testowania Kubeflow na AWS napotkaliśmy problem w postaci ograniczonych możliwości kont do nauki.
+Nie byliśmy w stanie stworzyć ról koniecznych do inicjalizacji frameworka na platformie EKS. 
+
+Alternatywne rozwiązanie nie wykorzystujące platformy AWS, a korzysta z narzędzia Kind. Jest to open-source'owe rozwiązanie
+do testowania infrastruktury Kubernetesowej na lokalnym środowisku. Pozwoliłoby to symulowanie środowiska chmurowego bez ograniczeń
+narzuconych przez konta dostarczane przez uczelnie. Rozwiązanie to dawałoby wymiernie gorsze wyniki w stosunku
+do rozwiązania opartego o środowisko chmurowe.
+
 ### Opis konfiguracji
+
+```yaml
+apiVersion: serving.kserve.io/v1beta1
+kind: InferenceService
+metadata:
+  annotations:
+    sidecar.istio.io/inject: 'false'
+  name: half-plus-two
+  namespace: ${PROFILE_NAMESPACE}
+spec:
+  predictor:
+    model:
+      modelFormat:
+        name: tensorflow
+      storageUri: ${S3_BUCKET_URI}
+    serviceAccountName: aws-sa
+```
+
+Konfiguracja KServe do prawidłowego funkcjonowania potrzebuje serwisu S3, 
+na którym umieszczony będzie odpowiednio skonfigurowany model oraz platformy Lambda do wykonywania operacji bez serwera. 
+Użycie tej technologii zasadniczo redukuje koszty wynikające z utrzymaniem serwera oraz pozwala 
+na swobodne skalowanie w zależności od liczby żądań usługi.
+
+```yaml
+apiVersion: "kubeflow.org/v1"
+kind: PyTorchJob
+metadata:
+  name: pytorch-simple
+  namespace: kubeflow
+spec:
+  pytorchReplicaSpecs:
+    Master:
+      replicas: 1
+      restartPolicy: OnFailure
+      template:
+        spec:
+          containers:
+            - name: pytorch
+              image: docker.io/kubeflowkatib/pytorch-mnist:v1beta1-45c5727
+              imagePullPolicy: Always
+              command:
+                - "python3"
+                - "/opt/pytorch-mnist/mnist.py"
+                - "--epochs=1"
+    Worker:
+      replicas: 4
+      restartPolicy: OnFailure
+      template:
+        spec:
+          containers:
+            - name: pytorch
+              image: docker.io/kubeflowkatib/pytorch-mnist:v1beta1-45c5727
+              imagePullPolicy: Always
+              command:
+                - "python3"
+                - "/opt/pytorch-mnist/mnist.py"
+                - "--epochs=1"
+```
+
+W celu rozpoczęcia trenowania modelu sztucznej inteligencji wykorzystywana jest definicja serwisu Kubernetesowego przedstawiona powyżej.
+Tworzy ona workerów z wgranym kodem oraz predefiniowanymi parametrami.
 
 ### Instalacja
 
