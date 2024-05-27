@@ -207,8 +207,26 @@ W celu rozpoczęcia trenowania modelu sztucznej inteligencji wykorzystywana jest
 Tworzy ona workerów z wgranym kodem oraz predefiniowanymi parametrami.
 
 ### Instalacja
+Do inicjalizacji konieczne jest najpierw pobranie i odpowiednie skonfigurowanie poniższych aplikacji:
+- Terraform
+- AWS-CLI
+
+W przypadku Terraforma należy tak skonfigurować to narzędzie, by możliwe było uruchomienie go z wiersza poleceń.
+
+W przypadku AWS-CLI należy dodatkowo skonfigurować referencje do konta, tak by wszystkie operacje wykonywane przez Terraforma były autoryzowane z konta właściciela.
 
 ### Instrukcja inicjalizacji systemu
+By zainicjalizować system należy przejść do folderu /aws/terraform. W nim należy wykonać dwie komendy:
+```shell
+terraform init
+```
+a następnie:
+```shell
+terraform apply
+```
+W trakcie tego terraform poprosi użytkownika o zatwierdzenie zmian. Następnie Terraform stworzy wszystkie potrzebne zasoby na chmurze i inicjalizuje system. Po około półtorej godziny Kubeflow powinien być gotowy.
+
+
 
 ### Wdrożenie i użytkowanie demo
 

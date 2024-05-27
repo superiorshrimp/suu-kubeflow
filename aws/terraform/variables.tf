@@ -11,18 +11,6 @@ variable "region" {
   default     = "us-east-1"
 }
 
-variable  "eks_config" {
-  type = object({
-    node_group_name  = string
-    eks_cluster_name = string
-  })
-
-  default = {
-    node_group_name  = "suu-kubeflow-training"
-    eks_cluster_name = "suu-kubeflow-project"
-  }
-}
-
 variable "controller_instance_config" {
   type = object({
     instance_type         = string
@@ -33,7 +21,7 @@ variable "controller_instance_config" {
 
   default = {
     instance_type         = "t2.medium"
-    ami                   = "ami-080e1f13689e07408"
+    ami                   = "ami-02a07d31009cc8717"
     iam_instance_profile  = "LabInstanceProfile"
     key_name              = "vockey"
   }

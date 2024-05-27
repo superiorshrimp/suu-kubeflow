@@ -1,4 +1,4 @@
-resource "aws_instance" "controller_instance" {
+resource "aws_instance" "kubeflow-controller" {
   instance_type = var.controller_instance_config.instance_type
   ami           = var.controller_instance_config.ami
 
@@ -8,11 +8,7 @@ resource "aws_instance" "controller_instance" {
   key_name                    = var.controller_instance_config.key_name
   associate_public_ip_address = "true"
 
-  user_data = templatefile("../scripts/init_kubeflow_controller.sh", {
-    cluster_name  = "${var.eks_config.eks_cluster_name}"
-    region        = "${var.region}"
-  })
-
+  user_data = "../scripts/init_mini_kubeflow.sh"
   metadata_options {
     http_endpoint = "enabled"
   }
