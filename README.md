@@ -132,7 +132,7 @@ Jest ona, także głównym zasobem Kubeflow, którym zarządza i buduje swoją k
 Kubeflow potrzebuje odpowiedniego środowiska w celu inicjalizacji na nim pracy. 
 Jednym wymogów jest wykorzystywanie systemu Ubuntu. W tym celu powstał kontroler Kubeflow, 
 będący maszyną EC2 z odpowiednią konfiguracją. Podczas inicjalizacji pobiera wszystkie potrzebne aplikacje i biblioteki 
-oraz ustawia zmienne środowiskowe, tak by użytkownik mógł od razu używać to narzędzie. Infrastruktura jest wykorzystywana
+oraz ustawia zmienne środowiskowe, tak by użytkownik mógł od razu używać tego narzędzia. Infrastruktura jest wykorzystywana
 w obu podpunktach demo w trakcie trenowania, jak i w trakcie serwowania modelu.
 
 W trakcie testowania Kubeflow na AWS napotkaliśmy problem w postaci ograniczonych możliwości kont do nauki.
@@ -226,6 +226,7 @@ terraform apply
 ```
 W trakcie tego terraform poprosi użytkownika o zatwierdzenie zmian. Następnie Terraform stworzy wszystkie potrzebne zasoby na chmurze i inicjalizuje system. Po około półtorej godziny Kubeflow powinien być gotowy.
 
+W ten sposób powstaje architektura, na której oprzeć można zarówno KServe, jak i KTFO.
 
 
 ### Wdrożenie i użytkowanie demo
