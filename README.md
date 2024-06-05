@@ -234,8 +234,34 @@ W ten sposób powstaje architektura, na której oprzeć można zarówno KServe, 
 Za pomocą dostępnych źródeł i doświadczeń zebranych z wcześniejszych eksperymentów utworzono plik pythonowy, [training.py](./training.py) koordynujący inicjalizację modelu i preprocessing zbioru danych, a następnie uruchamiający trening za pomocą biblioteki `transformers` w rozproszonym środowisku utworzonym przez Kubeflow. Plik jest samowystarczalną bazą, konieczną do uruchomienia i przeprowadzenia treningu, ale nie konfiguruje on środowiska, w którym ma się on odbyć. Ta czynność może być wykonana na dwa różne sposoby. Jeśli chcemy uruchomić trening z poziomu jupyterowego notebooka możemy skorzystać z metody udostępnianej przez bibliotekę `kubeflow` &rarr; **TrainingClient().create_job()**. Alternatywnie można stworzyć odpowiedni plik yamlowy, jeśli preferujemy uruchamianie treningu z konsoli , np. przez aws cli.
 
 ## Plik konfiguracyjny yaml
+```yaml
+apiVersion: kubeflow.org/v1
+kind: PTJob
+metadata:
+ name: suu-kubeflow
+spec:
+ tfReplicaSpecs:
+    Worker:
+      replicas: 2
+      restartPolicy: unless-stopped
+      template:
+        spec:
+          containers:
+          - name: suu-kubeflow
+            image: rzepson/suu-kubeflow:0.2
+```
 
-## Kontener Dockerowy
+Aby uruchomić trening za pomocą Kubeflow należy wykonać następującą komendę:
+
+```shell
+kubectl apply -f <name_of_yaml_file>.yaml -n kubeflow
+```
+
+Podczas prób deploymentu za pomocą Juju, pojawia się błąd przedstawiony na poniższym zrzucie ekranu. Jest to wynik komendy ```juju status```, która reportuje status deployowanej aplikacji.
+
+<p align="center">
+  <img src="img/juju_error.png"/>
+</p>
 
 ### Podsumowanie i wnioski
 
