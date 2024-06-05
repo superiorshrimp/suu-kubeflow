@@ -230,7 +230,16 @@ W ten sposób powstaje architektura, na której oprzeć można zarówno KServe, 
 
 
 ### Wdrożenie i użytkowanie demo
+## Skrypt treningowy w Pythonie
+Za pomocą dostępnych źródeł i doświadczeń zebranych z wcześniejszych eksperymentów utworzono plik pythonowy, [training.py](./training.py) koordynujący inicjalizację modelu i preprocessing zbioru danych, a następnie uruchamiający trening za pomocą biblioteki `transformers` w rozproszonym środowisku utworzonym przez Kubeflow. Plik jest samowystarczalną bazą, konieczną do uruchomienia i przeprowadzenia treningu, ale nie konfiguruje on środowiska, w którym ma się on odbyć. Ta czynność może być wykonana na dwa różne sposoby. Jeśli chcemy uruchomić trening z poziomu jupyterowego notebooka możemy skorzystać z metody udostępnianej przez bibliotekę `kubeflow` &rarr; **TrainingClient().create_job()**. Alternatywnie można stworzyć odpowiedni plik yamlowy, jeśli preferujemy uruchamianie treningu z konsoli , np. przez aws cli.
+
+## Plik konfiguracyjny yaml
+
+## Kontener Dockerowy
 
 ### Podsumowanie i wnioski
 
 ### Referencje
+* [Oficjalna dokumentacja Kubeflow - poradnik jak uruchomić PyTorchJob za pomocą pliku yamlowego](https://www.kubeflow.org/docs/components/training/user-guides/pytorch/)
+* [Poradnik jak uruchomić Kubeflow Training Operator lokalnie za pomocą pliku yamlowego i obrazu Dockerowego](https://medium.com/@shivasubramaniam1516/run-a-ml-model-in-kubernets-using-kubeflow-training-operator-d32dda2face5)
+* [Oficjalny tutorial Kubeflow jak uruchomić PyTorchJob z poziomu notebooka ipynb](https://github.com/kubeflow/training-operator/blob/master/examples/pytorch/text-classification/Fine-Tune-BERT-LLM.ipynb?fbclid=IwZXh0bgNhZW0CMTAAAR2LLY_qi87jzNTC9QHkrOJnO_D_hFS3iOlFslIOgBlucuLQD94JPAL-HyQ_aem_AVRWquGe2vX8l4knJWy_7iJdvYjdBdwmYyk4Mdu61RQF5-bM0n_ypCoTANslnFRc-1N7PeCA809aHMiXZiZCwmQb)
