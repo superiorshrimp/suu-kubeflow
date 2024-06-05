@@ -259,9 +259,7 @@ kubectl apply -f <name_of_yaml_file>.yaml -n kubeflow
 
 Podczas prób deploymentu za pomocą Juju, pojawia się błąd przedstawiony na poniższym zrzucie ekranu. Jest to wynik komendy ```juju status```, która reportuje status deployowanej aplikacji.
 
-<p align="center">
-  <img src="img/juju_error.png"/>
-</p>
+![JUJU](img/juju-error.png)
 
 ### Podsumowanie i wnioski
 
