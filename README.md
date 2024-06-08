@@ -263,6 +263,10 @@ Podczas prób deploymentu za pomocą Juju, pojawia się błąd przedstawiony na 
 
 ## Próba inicjalizacji środowiska bezpośrednio na microk8s
 
+Po nieudanych działaniach opisanych powyżej, podjęliśmy się próby uruchomienia środowiska bezpośrednio na MicroK8s. Niestety, również ta próba zakończyła się niepowodzeniem z powodu wymagania KVM przez MicroK8s, który nie jest wspierany na instancjach EC2. W rezultacie, otrzymywaliśmy poniższy błąd.
+
+![KVM](img/kvm-error.png)
+
 # Podsumowanie i wnioski
 Przykłady z dokumantacji Kubeflow, w tym pokazowy trening modelu BERT świetnie pokazują mocne strony proponowanego rozwiązania, tj. przyśpieszenie treningu dużych sieci neuronowych za pomocą rozproszonych algorytmów, np. ring-reduce, zarówno na procesorach, jak i kartach graficznych. Kubeflow jest świetną alternatywą dla osób nieposiadających odpowiednich zasobów sprzętowych, w szczególności jednostek GPU oraz dla osób mniej biegłych w obsłudze rozwiązań chmurowych, ponieważ uruchomienie treningu z poziomu jupyterowego notebooka jest bardzo proste, o ile tylko czeka na nas przygotowana odpowiednia infrastruktura. To właśnie okazało się problemem nie do pokonania w naszym projekcie. Konta studenckie AWS Academy nie zapewniały uprawnień wystarczających do utworzenia odpowiedniego środowiska dla Kubeflow. Próby rozwiązania tej kwestii w alternatywny sposób za pomoca juju lub poprzez inicjalizację Kubeflow bezpośrednio na klastrze microk8s nie powiodły się. 
 
